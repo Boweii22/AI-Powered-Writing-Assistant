@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered Writing Assistant</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>AI-Powered Writing Assistant</h1>
+
+        <!-- Form to take user input -->
+        <form method="POST" action="/generate">
+            <label for="prompt">Enter your prompt:</label>
+            <textarea id="prompt" name="prompt" rows="5" required>{{ prompt if prompt else '' }}</textarea>
+            <button type="submit">Generate</button>
+        </form>
+
+        <!-- Display generated content if any -->
+        {% if responses %}
+            <div class="response-container">
+                <h2>Generated Content:</h2>
+                {% for response in responses %}
+                    <div class="response">
+                        <p>{{ response }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
